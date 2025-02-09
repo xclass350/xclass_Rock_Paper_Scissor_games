@@ -89,3 +89,34 @@ function displayWinner(results) {
     resultsDiv.classList.toggle("show-winner");
   }, 1000);
 }
+function isWinner(results) {
+  return results[0].beats === results[1].name;
+}
+
+function keepScore(point) {
+  score += point;
+  scoreNumber.innerText = score;
+}
+
+// Play Again
+playAgainBtn.addEventListener("click", () => {
+  gameDiv.classList.toggle("hidden");
+  resultsDiv.classList.toggle("hidden");
+
+  resultDivs.forEach((resultDiv) => {
+    resultDiv.innerHTML = "";
+    resultDiv.classList.remove("winner");
+  });
+
+  resultText.innerText = "";
+  resultWinner.classList.toggle("hidden");
+  resultsDiv.classList.toggle("show-winner");
+});
+
+// Show/Hide Rules
+btnRules.addEventListener("click", () => {
+  modalRules.classList.toggle("show-modal");
+});
+btnClose.addEventListener("click", () => {
+  modalRules.classList.toggle("show-modal");
+});
